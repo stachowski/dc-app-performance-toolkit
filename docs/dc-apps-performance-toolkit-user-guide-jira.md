@@ -30,7 +30,16 @@ The ASI is a Virtual Private Cloud (VPC) consisting of subnets, NAT gateways, se
 
 If you are a new user, perform an end-to-end deployment. This involves deploying Jira into a _new_ ASI.
 
-If you have already deployed the ASI separately by using the [ASI Quick Start](https://aws.amazon.com/quickstart/architecture/atlassian-standard-infrastructure/)ASI Quick Start or by deploying another Atlassian product (Jira, Bitbucket, or Confluence Data Center), deploy Jira into your existing ASI.
+If you have already deployed the ASI separately by using the [ASI Quick Start](https://aws.amazon.com/quickstart/architecture/atlassian-standard-infrastructure/) or by deploying another Atlassian product (Jira, Bitbucket, or Confluence Data Center), deploy Jira into your existing ASI.
+
+In order to avoid further misunderstanding in work with the Jira cluster, we strongly recommended that you use the template file. Here you can download template file with necessary configuration:
+1. [Deploy Jira into a new ASI](https://aws-quickstart.s3.amazonaws.com/quickstart-atlassian-jira/templates/quickstart-jira-dc-with-vpc.template.yaml);
+1. [Deploy Jira into your existing ASI](https://aws-quickstart.s3.amazonaws.com/quickstart-atlassian-jira/templates/quickstart-jira-dc.template.yaml).
+
+After you have downloaded the required template file, go to Create a CloudFormation stack and configure it:
+1. In the **Prerequisite - Prepare template** section choose the **Template is ready**.
+1. In the **Template source** section choose the **Upload a template file** then click on the **Choose file** button and select the template file that you have downloaded above.
+1. Click on the **Next** button.
 
 {{% note %}}
 You are responsible for the cost of the AWS services used while running this Quick Start reference deployment. There is no additional price for using this Quick Start. For more information, go to [aws.amazon.com/pricing](https://aws.amazon.com/ec2/pricing/).
