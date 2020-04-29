@@ -36,7 +36,7 @@ In order to avoid further misunderstanding in work with the Jira cluster, we str
 1. [Deploy Jira into a new ASI](https://aws-quickstart.s3.amazonaws.com/quickstart-atlassian-jira/templates/quickstart-jira-dc-with-vpc.template.yaml);
 1. [Deploy Jira into your existing ASI](https://aws-quickstart.s3.amazonaws.com/quickstart-atlassian-jira/templates/quickstart-jira-dc.template.yaml).
 
-After you have downloaded the required template file, go to Create a CloudFormation stack and configure it:
+After you have downloaded the required template file, go to [Create a CloudFormation stack](https://us-west-2.console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/create/template) and configure it:
 1. In the **Prerequisite - Prepare template** section choose the **Template is ready**.
 1. In the **Template source** section choose the **Upload a template file** then click on the **Choose file** button and select the template file that you have downloaded above.
 1. Click on the **Next** button.
