@@ -41,9 +41,7 @@ After you have downloaded the required template file, go to Create a CloudFormat
 1. In the **Template source** section choose the **Upload a template file** then click on the **Choose file** button and select the template file that you have downloaded above.
 1. Click on the **Next** button.
 
-{{% note %}}
-You are responsible for the cost of the AWS services used while running this Quick Start reference deployment. There is no additional price for using this Quick Start. For more information, go to [aws.amazon.com/pricing](https://aws.amazon.com/ec2/pricing/).
-{{% /note %}}
+> *You are responsible for the cost of the AWS services used while running this Quick Start reference deployment. There is no additional price for using this Quick Start. For more information, go to [aws.amazon.com/pricing](https://aws.amazon.com/ec2/pricing/).*
 
 To reduce costs, we recommend you to keep your deployment up and running only during the performance runs.
 
@@ -98,9 +96,7 @@ The Data Center App Performance Toolkit framework is also set up for concurrency
 | Enable RDS Multi-AZ deployment | true |
 | Application user database password | Password1! |
 
-{{% note %}}
-The **Master (admin) password** will be used later when restoring the SQL database dataset. If password value is not set to default, you'll need to change `DB_PASS` value manually in the restore database dump script (later in [Preloading your Jira deployment with an enterprise-scale dataset](#preloading)).
-{{% /note %}}
+> *The **Master (admin) password** will be used later when restoring the SQL database dataset. If password value is not set to default, you'll need to change `DB_PASS` value manually in the restore database dump script (later in [Preloading your Jira deployment with an enterprise-scale dataset](#preloading)).*
 
 **Networking (for new ASI)**
 
@@ -147,9 +143,7 @@ After successfully deploying Jira Data Center in AWS, you'll need to configure i
 1. On the **Set up email notifications** page, configure your email notifications, and then click **Finish**.
 1. After going through the welcome setup, click **Create new project** to create a new project.
 
-{{% note %}}
-After [Preloading your Jira deployment with an enterprise-scale dataset](#preloading), the admin user will have `admin`/`admin` credentials.
-{{% /note %}}
+> *After [Preloading your Jira deployment with an enterprise-scale dataset](#preloading), the admin user will have `admin`/`admin` credentials.*
 
 ## <a id="preloading"></a> Preloading your Jira deployment with an enterprise-scale dataset
 
@@ -175,9 +169,7 @@ Data dimensions and values for an enterprise-scale dataset are listed and descri
 | Versions | ~20 000 |
 | Workflows | 50 |
 
-{{% note %}}
-All the datasets use the standard `admin`/`admin` credentials.
-{{% /note %}}
+> *All the datasets use the standard `admin`/`admin` credentials.*
 
 Pre-loading the dataset is a three-step process:
 
@@ -193,9 +185,7 @@ You can load this dataset directly into the database (via a [populate_db.sh](htt
 
 #### Option 1: Loading the dataset via populate_db.sh script (~1 hour)
 
-{{% note %}}
-We recommend doing this via the CLI.
-{{% /note %}}
+> *We recommend doing this via the CLI.*
 
 To populate the database with SQL:
 
@@ -240,11 +230,9 @@ To populate the database with SQL:
     ./populate_db.sh | tee -a populate_db.log
     ```
 
-{{% note %}}
-Do not close or interrupt the session. It will take about an hour to restore SQL database. When SQL restoring is finished, an admin user will have `admin`/`admin` credentials.
-
-In case of a failure, check the `Variables` section and run the script one more time.
-{{% /note %}}
+> *Do not close or interrupt the session. It will take about an hour to restore SQL database. When SQL restoring is finished, an admin user will have `admin`/`admin` credentials.*
+>
+> *In case of a failure, check the `Variables` section and run the script one more time.*
 
 #### Option 2: Loading the dataset through XML import (~4 hours)
 
@@ -313,9 +301,7 @@ After [Importing the main dataset](#importingdataset), you'll now have to pre-lo
     ./upload_attachments.sh | tee -a upload_attachments.log
     ```
 
-{{% note %}}
-Do not close or interrupt the session. It will take about two hours to upload attachments to Elastic File Storage (EFS).
-{{% /note %}}
+> *Do not close or interrupt the session. It will take about two hours to upload attachments to Elastic File Storage (EFS).*
 
 ### <a id="reindexing"></a> Re-indexing Jira Data Center (~1 hour)
 
@@ -328,9 +314,7 @@ For more information, go to [Re-indexing Jira](https://confluence.atlassian.com/
 
 Jira will be unavailable for some time during the re-indexing process. When finished, the **Acknowledge** button will be available on the re-indexing page.
 
-{{% note %}}
-Go to **![cog icon](/platform/marketplace/images/cog.png) &gt; System &gt; General configuration**, click **Edit Settings** and set **Base URL** to **LoadBalancerURL** value.
-{{% /note %}}
+> *Go to **![cog icon](/platform/marketplace/images/cog.png) &gt; System &gt; General configuration**, click **Edit Settings** and set **Base URL** to **LoadBalancerURL** value.*
 
 ## Testing scenarios
 
@@ -373,13 +357,9 @@ To receive performance baseline results without an app installed:
     - `jmeter.*`: logs of the JMeter tool execution
     - `pytest.*`: logs of Pytest-Selenium execution
 
-{{% note %}}
-When the execution is successfully completed, the `INFO: Artifacts dir:` line with the full path to results directory will be displayed in console output. Save this full path to the run results folder. Later you will have to insert it under `runName: "without app"` for report generation.
-{{% /note %}}
-
-{{% note %}}
-Review `results_summary.log` file under artifacts dir location. Make sure that overall status is `OK` before moving to the next steps.
-{{% /note %}}
+> *When the execution is successfully completed, the `INFO: Artifacts dir:` line with the full path to results directory will be displayed in console output. Save this full path to the run results folder. Later you will have to insert it under `runName: "without app"` for report generation.*
+> 
+> *Review `results_summary.log` file under artifacts dir location. Make sure that overall status is `OK` before moving to the next steps.*
 
 #### <a id="regressionrun2"></a> Run 2 (~50 min + Lucene Index timing test)
 
@@ -387,9 +367,7 @@ If you are submitting a Jira app, you are required to conduct a Lucene Index tim
 
 First, benchmark your re-index time without your app installed:
 
-{{% note %}}
-Jira 7 index time for 1M issues on a User Guide [recommended configuration](#quick-start-parameters) is about ~100 min, Jira 8 index time is about ~40 min.
-{{% /note %}}
+> *Jira 7 index time for 1M issues on a User Guide [recommended configuration](#quick-start-parameters) is about ~100 min, Jira 8 index time is about ~40 min.*
 
 1. Go to **![cog icon](/platform/marketplace/images/cog.png) &gt; System &gt; Indexing**.
 1. Select the **Lock one Jira node and rebuild index** option.
@@ -412,13 +390,9 @@ After attaching both screenshots to your DC HELP ticket, move on to performance 
     bzt jira.yml
     ```
     
-{{% note %}}
-When the execution is successfully completed, the `INFO: Artifacts dir:` line with the full path to results directory will be displayed in console output. Save this full path to the run results folder. Later you will have to insert it under `runName: "with app"` for report generation.
-{{% /note %}}
-
-{{% note %}}
-Review `results_summary.log` file under artifacts dir location. Make sure that overall status is `OK` before moving to the next steps.
-{{% /note %}}
+> *When the execution is successfully completed, the `INFO: Artifacts dir:` line with the full path to results directory will be displayed in console output. Save this full path to the run results folder. Later you will have to insert it under `runName: "with app"` for report generation.*
+>
+> *Review `results_summary.log` file under artifacts dir location. Make sure that overall status is `OK` before moving to the next steps.*
 
 
 #### Generating a performance regression report
@@ -469,9 +443,7 @@ Here's a snippet of the extension JMeter script (`extension.jmx`).
 
 This ensures that these APIs are called as part of the view issue transaction with minimal intrusion (for example, no additional logins). For a fairer comparison, you have to keep the same number of base transactions before and after the plugin is installed.
 
-{{% note %}}
-The controllers in the extension script, which are executed along with the base action, are named after the corresponding base action (for example, `extend_search_jql`, `extend_view_issue`).
-{{% /note %}}
+> *The controllers in the extension script, which are executed along with the base action, are named after the corresponding base action (for example, `extend_search_jql`, `extend_view_issue`).*
 
 When debugging, if you want to only test transactions in the `extend_view_issue` action, you can comment out other transactions in the `jira.yml` config file and set the percentage of the base execution to 100. Alternatively, you can change percentages of others to 0.
 
@@ -483,9 +455,7 @@ When debugging, if you want to only test transactions in the `extend_view_issue`
 #      perc_view_dashboard: 8
 ```
 
-{{% note %}}
-If multiple actions are affected, add transactions to multiple extension controllers.
-{{% /note %}}
+> *If multiple actions are affected, add transactions to multiple extension controllers.*
 
 ##### Extending a stand-alone transaction
 
@@ -512,9 +482,7 @@ Use or access the following variables of the extension script from the base scri
 - `${jql}` - jql query being used (e.g. text ~ "qrk*" order by key)
 - `${username}` - the logged in username (e.g. admin)
 
-{{% note %}}
-If there are some additional variables from the base script required by the extension script, you can add variables to the base script using extractors. For more information, go to [Regular expression extractors](http://jmeter.apache.org/usermanual/component_reference.html#Regular_Expression_Extractor).
-{{% /note %}}
+> *If there are some additional variables from the base script required by the extension script, you can add variables to the base script using extractors. For more information, go to [Regular expression extractors](http://jmeter.apache.org/usermanual/component_reference.html#Regular_Expression_Extractor).*
 
 ##### Modifying Selenium
 
@@ -546,14 +514,10 @@ To receive scalability benchmark results for one-node Jira DC with app-specific 
 bzt jira.yml
 ```
 
-{{% note %}}
-When the execution is successfully completed, the `INFO: Artifacts dir:` line with the full path to results directory will be displayed.
-Save this full path to the run results folder. Later you will have to insert it under `runName: "Node 1"` for report generation.
-{{% /note %}}
-
-{{% note %}}
-Review `results_summary.log` file under artifacts dir location. Make sure that overall status is `OK` before moving to the next steps.
-{{% /note %}}
+> *When the execution is successfully completed, the `INFO: Artifacts dir:` line with the full path to results directory will be displayed.*
+> *Save this full path to the run results folder. Later you will have to insert it under `runName: "Node 1"` for report generation.*
+>
+> *Review `results_summary.log` file under artifacts dir location. Make sure that overall status is `OK` before moving to the next steps.*
 
 
 ##### <a id="run4"></a> Run 4 (~50 min)
@@ -593,13 +557,9 @@ To receive scalability benchmark results for two-node Jira DC with app-specific 
     bzt jira.yml
     ```    
 
-{{% note %}}
-When the execution is successfully completed, the `INFO: Artifacts dir:` line with the full path to results directory will be displayed in console output. Save this full path to the run results folder. Later you will have to insert it under `runName: "Node 2"` for report generation.
-{{% /note %}}
-
-{{% note %}}
-Review `results_summary.log` file under artifacts dir location. Make sure that overall status is `OK` before moving to the next steps.
-{{% /note %}}
+> *When the execution is successfully completed, the `INFO: Artifacts dir:` line with the full path to results directory will be displayed in console output. Save this full path to the run results folder. Later you will have to insert it under `runName: "Node 2"` for report generation.*
+>
+> *Review `results_summary.log` file under artifacts dir location. Make sure that overall status is `OK` before moving to the next steps.*
 
 
 ##### <a id="run5"></a> Run 5 (~50 min)
@@ -614,14 +574,10 @@ To receive scalability benchmark results for four-node Jira DC with app-specific
     bzt jira.yml
     ```    
 
-{{% note %}}
-When the execution is successfully completed, the `INFO: Artifacts dir:` line with the full path to results directory will be displayed in console output.
-Save this full path to the run results folder. Later you will have to insert it under `runName: "Node 4"` for report generation.
-{{% /note %}}
+> *When the execution is successfully completed, the `INFO: Artifacts dir:` line with the full path to results directory will be displayed in console output.*
+> *Save this full path to the run results folder. Later you will have to insert it under `runName: "Node 4"` for report generation.*
 
-{{% note %}}
-Review `results_summary.log` file under artifacts dir location. Make sure that overall status is `OK` before moving to the next steps.
-{{% /note %}}
+> *Review `results_summary.log` file under artifacts dir location. Make sure that overall status is `OK` before moving to the next steps.*
 
 
 #### Generating a report for scalability scenario
