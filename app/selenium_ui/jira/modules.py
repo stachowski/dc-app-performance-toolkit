@@ -8,12 +8,12 @@ from selenium_ui.jira.pages.pages import Login, PopupManager, Issue, Project, Se
 
 def setup_run_data(datasets):
     page_size = 25
-    projects_count = len(datasets['project_keys'])
+    projects_count = len(datasets["project_keys"])
     user = random.choice(datasets["users"])
     issue = random.choice(datasets["issues"])
     scrum_boards = random.choice(datasets["scrum_boards"])
     kanban_boards = random.choice(datasets["kanban_boards"])
-    project_key = random.choice(datasets["issues"])[2]
+    project_key = random.choice(datasets["project_keys"])[0]
     datasets['username'] = user[0]
     datasets['password'] = user[1]
     datasets['issue_key'] = issue[0]
@@ -59,8 +59,9 @@ def view_issue(webdriver, datasets):
     measure()
 
 
-def create_issue(webdriver, dataset):
+def create_issue(webdriver, datasets):
     issue_modal = Issue(webdriver)
+    project_key = datasets["project_key"]
 
     @print_timing("selenium_create_issue")
     def measure():
@@ -73,6 +74,7 @@ def create_issue(webdriver, dataset):
         @print_timing("selenium_create_issue:fill_and_submit_issue_form")
         def sub_measure():
             issue_modal.fill_summary_create()  # Fill summary field
+            issue_modal.fill_project(project_key)  # Select project
             issue_modal.fill_description_create()  # Fill description field
             issue_modal.assign_to_me()  # Click assign to me
             issue_modal.set_resolution()  # Set resolution if there is such field

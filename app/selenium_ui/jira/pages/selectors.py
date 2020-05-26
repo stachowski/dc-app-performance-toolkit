@@ -109,6 +109,7 @@ class IssueLocators:
     issue_type_dropdown_elements = (By.CLASS_NAME, "aui-list-item")
     issue_ready_to_save_spinner = (By.CSS_SELECTOR, ".buttons>.throbber")
     issue_submit_button = (By.ID, "create-issue-submit")
+    issue_project = (By.ID, "project-field")
 
     # Edit Issue page
     edit_issue_page = (By.ID, "issue-edit")
