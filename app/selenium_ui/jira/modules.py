@@ -59,9 +59,18 @@ def view_issue(webdriver, datasets):
     measure()
 
 
+def view_project_summary(webdriver, datasets):
+    project_page = Project(webdriver, project_key=datasets['project_key'])
+
+    @print_timing("selenium_project_summary")
+    def measure():
+        project_page.go_to()
+        project_page.wait_for_page_loaded()
+    measure()
+
+
 def create_issue(webdriver, datasets):
     issue_modal = Issue(webdriver)
-    project_key = datasets["project_key"]
 
     @print_timing("selenium_create_issue")
     def measure():
@@ -74,7 +83,6 @@ def create_issue(webdriver, datasets):
         @print_timing("selenium_create_issue:fill_and_submit_issue_form")
         def sub_measure():
             issue_modal.fill_summary_create()  # Fill summary field
-            issue_modal.fill_project(project_key)  # Select project
             issue_modal.fill_description_create()  # Fill description field
             issue_modal.assign_to_me()  # Click assign to me
             issue_modal.set_resolution()  # Set resolution if there is such field
@@ -87,16 +95,6 @@ def create_issue(webdriver, datasets):
         sub_measure()
     measure()
     PopupManager(webdriver).dismiss_default_popup()
-
-
-def view_project_summary(webdriver, datasets):
-    project_page = Project(webdriver, project_key=datasets['project_key'])
-
-    @print_timing("selenium_project_summary")
-    def measure():
-        project_page.go_to()
-        project_page.wait_for_page_loaded()
-    measure()
 
 
 def search_jql(webdriver, datasets):

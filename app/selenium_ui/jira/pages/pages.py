@@ -101,11 +101,6 @@ class Issue(BasePage):
         summary = f"Issue created date {time.time()}"
         self.wait_until_clickable(IssueLocators.issue_summary_field).send_keys(summary)
 
-    def fill_project(self, project_key):
-        project_drop_down = self.wait_until_visible(IssueLocators.issue_project)
-        project_drop_down.send_keys(project_key)
-        project_drop_down.send_keys(Keys.ENTER)
-
     def assign_to_me(self):
         assign_to_me_links = self.get_elements(IssueLocators.issue_assign_to_me_link)
         for link in assign_to_me_links:

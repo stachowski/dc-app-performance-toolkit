@@ -15,6 +15,10 @@ def test_1_selenium_browse_boards_list(webdriver, jira_datasets, jira_screen_sho
     modules.browse_boards_list(webdriver, jira_datasets)
 
 
+def test_1_selenium_view_project_summary(webdriver, jira_datasets, jira_screen_shots):
+    modules.view_project_summary(webdriver, jira_datasets)
+
+
 def test_1_selenium_create_issue(webdriver, jira_datasets, jira_screen_shots):
     modules.create_issue(webdriver, jira_datasets)
 
@@ -49,10 +53,6 @@ def test_1_selenium_view_dashboard(webdriver, jira_datasets, jira_screen_shots):
 
 def test_1_selenium_view_issue(webdriver, jira_datasets, jira_screen_shots):
     modules.view_issue(webdriver, jira_datasets)
-
-
-def test_1_selenium_view_project_summary(webdriver, jira_datasets, jira_screen_shots):
-    modules.view_project_summary(webdriver, jira_datasets)
 
 
 """
