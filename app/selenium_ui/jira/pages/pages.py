@@ -176,7 +176,8 @@ class Search(BasePage):
     def wait_for_page_loaded(self, interaction):
         self.wait_until_any_ec_presented(selector_names=[SearchLocators.search_issue_table,
                                                          SearchLocators.search_issue_content,
-                                                         SearchLocators.search_no_issue_found],
+                                                         SearchLocators.search_no_issue_found,
+                                                         SearchLocators.search_no_results_found],
                                          interaction=interaction)
 
 
