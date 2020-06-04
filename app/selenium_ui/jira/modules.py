@@ -11,16 +11,16 @@ def setup_run_data(datasets):
     projects_count = len(datasets['project_keys'])
     user = random.choice(datasets["users"])
     issue = random.choice(datasets["issues"])
-    scrum_boards = random.choice(datasets["scrum_boards"])
-    kanban_boards = random.choice(datasets["kanban_boards"])
+    #scrum_boards = random.choice(datasets["scrum_boards"])
+    #kanban_boards = random.choice(datasets["kanban_boards"])
     project_key = random.choice(datasets["issues"])[2]
     datasets['username'] = user[0]
     datasets['password'] = user[1]
     datasets['issue_key'] = issue[0]
     datasets['issue_id'] = issue[1]
     datasets['project_key'] = project_key
-    datasets['scrum_board_id'] = scrum_boards[0]
-    datasets['kanban_board_id'] = kanban_boards[0]
+    #datasets['scrum_board_id'] = scrum_boards[0]
+    #datasets['kanban_board_id'] = kanban_boards[0]
     datasets['jql'] = urllib.parse.quote(random.choice(datasets["jqls"][0]))
     datasets['pages'] = projects_count // page_size if projects_count % page_size == 0 \
         else projects_count // page_size + 1
@@ -151,6 +151,7 @@ def browse_projects_list(webdriver, datasets):
     measure(webdriver, "selenium_browse_projects_list")
 
 
+'''
 def browse_boards_list(webdriver, datasets):
     @print_timing
     def measure(webdriver, interaction):
@@ -186,7 +187,7 @@ def view_kanban_board(webdriver, datasets):
         kanban_board_page.go_to()
         kanban_board_page.wait_for_page_loaded(interaction)
     measure(webdriver, "selenium_view_kanban_board")
-
+'''
 
 def view_dashboard(webdriver, datasets):
     dashboard_page = Dashboard(webdriver)

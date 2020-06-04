@@ -5,13 +5,14 @@ import urllib3
 
 from util.conf import JIRA_SETTINGS
 from util.data_preparation.api.jira_clients import JiraRestClient
-from util.project_paths import JIRA_DATASET_JQLS, JIRA_DATASET_SCRUM_BOARDS, JIRA_DATASET_KANBAN_BOARDS, \
+from util.project_paths import JIRA_DATASET_JQLS, \
     JIRA_DATASET_USERS, JIRA_DATASET_ISSUES, JIRA_DATASET_PROJECT_KEYS
+#,JIRA_DATASET_SCRUM_BOARDS, JIRA_DATASET_KANBAN_BOARDS,
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-KANBAN_BOARDS = "kanban_boards"
-SCRUM_BOARDS = "scrum_boards"
+#KANBAN_BOARDS = "kanban_boards"
+#SCRUM_BOARDS = "scrum_boards"
 USERS = "users"
 ISSUES = "issues"
 JQLS = "jqls"
@@ -58,11 +59,11 @@ def generate_random_string(length=20):
 def write_test_data_to_files(datasets):
     __write_to_file(JIRA_DATASET_JQLS, datasets[JQLS])
 
-    scrum_boards = [board['id'] for board in datasets[SCRUM_BOARDS]]
-    __write_to_file(JIRA_DATASET_SCRUM_BOARDS, scrum_boards)
+    #scrum_boards = [board['id'] for board in datasets[SCRUM_BOARDS]]
+    #__write_to_file(JIRA_DATASET_SCRUM_BOARDS, scrum_boards)
 
-    kanban_boards = [board['id'] for board in datasets[KANBAN_BOARDS]]
-    __write_to_file(JIRA_DATASET_KANBAN_BOARDS, kanban_boards)
+    #kanban_boards = [board['id'] for board in datasets[KANBAN_BOARDS]]
+    #__write_to_file(JIRA_DATASET_KANBAN_BOARDS, kanban_boards)
 
     users = [f"{user['name']},{DEFAULT_USER_PASSWORD}" for user in datasets[USERS]]
     __write_to_file(JIRA_DATASET_USERS, users)
@@ -86,8 +87,8 @@ def __create_data_set(jira_api):
     software_project_keys = __get_software_project_keys(jira_api, PROJECTS_COUNT_LIMIT)
     dataset[PROJECT_KEYS] = software_project_keys
     dataset[ISSUES] = __get_issues(jira_api, software_project_keys)
-    dataset[SCRUM_BOARDS] = __get_boards(jira_api, 'scrum')
-    dataset[KANBAN_BOARDS] = __get_boards(jira_api, 'kanban')
+    #dataset[SCRUM_BOARDS] = __get_boards(jira_api, 'scrum')
+    #dataset[KANBAN_BOARDS] = __get_boards(jira_api, 'kanban')
     dataset[JQLS] = __generate_jqls(count=150)
 
     return dataset

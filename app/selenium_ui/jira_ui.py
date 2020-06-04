@@ -10,10 +10,10 @@ def test_0_selenium_a_login(webdriver, jira_datasets, jira_screen_shots):
 def test_1_selenium_browse_projects_list(webdriver, jira_datasets, jira_screen_shots):
     modules.browse_projects_list(webdriver, jira_datasets)
 
-
+'''
 def test_1_selenium_browse_boards_list(webdriver, jira_datasets, jira_screen_shots):
     modules.browse_boards_list(webdriver, jira_datasets)
-
+'''
 
 def test_1_selenium_create_issue(webdriver, jira_datasets, jira_screen_shots):
     modules.create_issue(webdriver, jira_datasets)
@@ -31,6 +31,7 @@ def test_1_selenium_search_jql(webdriver, jira_datasets, jira_screen_shots):
     modules.search_jql(webdriver, jira_datasets)
 
 
+'''
 def test_1_selenium_view_backlog_for_scrum_board(webdriver, jira_datasets, jira_screen_shots):
     modules.view_backlog_for_scrum_board(webdriver, jira_datasets)
 
@@ -40,7 +41,8 @@ def test_1_selenium_view_scrum_board(webdriver, jira_datasets, jira_screen_shots
 
 
 def test_1_selenium_view_kanban_board(webdriver, jira_datasets, jira_screen_shots):
-    modules.view_kanban_board(webdriver, jira_datasets)
+    modules.view_kanban_board(webdriver, jira_datasets) 
+'''
 
 
 def test_1_selenium_view_dashboard(webdriver, jira_datasets, jira_screen_shots):

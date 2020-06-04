@@ -125,7 +125,10 @@ class JiraRestClient(RestClient):
             "name": name,
             "password": password,
             "emailAddress": email or name + '@localdomain.com',
-            "displayName": display_name or name
+            "displayName": display_name or name,
+            "applicationKeys": [
+                "jira-servicedesk"
+            ]
         }
         response = self.post(api_url, "Could not create user", body=payload)
 

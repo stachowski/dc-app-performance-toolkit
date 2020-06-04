@@ -1113,6 +1113,7 @@ JMeterUtils.setProperty(&quot;c_AtlToken&quot; + user_counter, atl_token)
             <boolProp name="rewindOnTheEndOfList">true</boolProp>
             <boolProp name="independentListPerThread">false</boolProp>
           </com.blazemeter.jmeter.RandomCSVDataSetConfig>
+          <!--
           <hashTree/>
           <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="kanban boards" enabled="true">
             <stringProp name="filename">datasets/jira/kanban-boards.csv</stringProp>
@@ -1136,6 +1137,7 @@ JMeterUtils.setProperty(&quot;c_AtlToken&quot; + user_counter, atl_token)
             <boolProp name="stopThread">false</boolProp>
             <stringProp name="shareMode">shareMode.all</stringProp>
           </CSVDataSet>
+          -->
           <hashTree/>
           <TestAction guiclass="TestActionGui" testclass="TestAction" testname="pacing - start" enabled="true">
             <intProp name="ActionProcessor.action">1</intProp>
