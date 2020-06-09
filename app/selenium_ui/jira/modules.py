@@ -12,8 +12,8 @@ def setup_run_data(datasets):
     user = random.choice(datasets["users"])
     issue = random.choice(datasets["issues"])
     sdissue = random.choice(datasets["sd_issues"])
-    #scrum_boards = random.choice(datasets["scrum_boards"])
-    #kanban_boards = random.choice(datasets["kanban_boards"])
+    scrum_boards = random.choice(datasets["scrum_boards"])
+    kanban_boards = random.choice(datasets["kanban_boards"])
     project_key = random.choice(datasets["issues"])[2]
     sd_project_key = random.choice(datasets["sd_issues"])[2]
     datasets['username'] = user[0]
@@ -24,8 +24,8 @@ def setup_run_data(datasets):
     datasets['sd_issue_id'] = sdissue[1]
     datasets['project_key'] = project_key
     datasets['sd_project_key'] = sd_project_key
-    #datasets['scrum_board_id'] = scrum_boards[0]
-    #datasets['kanban_board_id'] = kanban_boards[0]
+    datasets['scrum_board_id'] = scrum_boards[0]
+    datasets['kanban_board_id'] = kanban_boards[0]
     datasets['jql'] = urllib.parse.quote(random.choice(datasets["jqls"][0]))
     datasets['pages'] = projects_count // page_size if projects_count % page_size == 0 \
         else projects_count // page_size + 1
