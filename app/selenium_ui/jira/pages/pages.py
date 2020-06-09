@@ -4,7 +4,7 @@ import random
 
 from selenium_ui.base_page import BasePage
 from selenium_ui.jira.pages.selectors import UrlManager, LoginPageLocators, DashboardLocators, PopupLocators, \
-    IssueLocators, ProjectLocators, SearchLocators, BoardsListLocators, BoardLocators, LogoutLocators
+    IssueLocators, ProjectLocators, SearchLocators, BoardsListLocators, BoardLocators, LogoutLocators, QueuesLocators
 
 
 class PopupManager(BasePage):
@@ -195,3 +195,16 @@ class Board(BasePage):
 
     def wait_for_scrum_board_backlog(self, interaction):
         self.wait_until_present(BoardLocators.scrum_board_backlog_content, interaction)
+
+
+class SDQueues(BasePage):
+
+    def __init__(self, driver, project_key):
+        BasePage.__init__(self, driver)
+        self.project_key = project_key
+        url_manager = UrlManager(project_key=self.project_key)
+        self.page_url = url_manager.sd_queues_url()
+
+    def wait_for_page_loaded(self, interaction):
+        self.wait_until_any_ec_presented(selector_names=[QueuesLocators.queues_content],
+                                         interaction=interaction)

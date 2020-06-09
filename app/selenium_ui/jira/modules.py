@@ -3,7 +3,7 @@ import urllib.parse
 
 from selenium_ui.conftest import print_timing
 from selenium_ui.jira.pages.pages import Login, PopupManager, Issue, Project, Search, ProjectsList, \
-    BoardsList, Board, Dashboard, Logout
+    BoardsList, Board, Dashboard, Logout, SDQueues
 
 
 def setup_run_data(datasets):
@@ -11,14 +11,19 @@ def setup_run_data(datasets):
     projects_count = len(datasets['project_keys'])
     user = random.choice(datasets["users"])
     issue = random.choice(datasets["issues"])
+    sdissue = random.choice(datasets["sd_issues"])
     #scrum_boards = random.choice(datasets["scrum_boards"])
     #kanban_boards = random.choice(datasets["kanban_boards"])
     project_key = random.choice(datasets["issues"])[2]
+    sd_project_key = random.choice(datasets["sd_issues"])[2]
     datasets['username'] = user[0]
     datasets['password'] = user[1]
     datasets['issue_key'] = issue[0]
     datasets['issue_id'] = issue[1]
+    datasets['sd_issue_key'] = sdissue[0]
+    datasets['sd_issue_id'] = sdissue[1]
     datasets['project_key'] = project_key
+    datasets['sd_project_key'] = sd_project_key
     #datasets['scrum_board_id'] = scrum_boards[0]
     #datasets['kanban_board_id'] = kanban_boards[0]
     datasets['jql'] = urllib.parse.quote(random.choice(datasets["jqls"][0]))
@@ -91,6 +96,15 @@ def view_project_summary(webdriver, datasets):
         project_page.go_to()
         project_page.wait_for_page_loaded(interaction)
     measure(webdriver, "selenium_project_summary")
+
+def sd_view_project_queues(webdriver, datasets):
+    queues_page = SDQueues(webdriver, project_key=datasets['sd_project_key'])
+
+    @print_timing
+    def measure(webdriver, interaction):
+        queues_page.go_to()
+        queues_page.wait_for_page_loaded(interaction)
+    measure(webdriver, "selenium_sd_view_queues")
 
 
 def search_jql(webdriver, datasets):

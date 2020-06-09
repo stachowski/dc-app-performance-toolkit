@@ -66,6 +66,14 @@ Refer to `app/selenium_ui/jira/modules.py` for examples.
 #     extension_ui.custom_action(webdriver, jira_datasets)
 
 
+def test_1_selenium_sd_view_queues(webdriver, jira_datasets, jira_screen_shots):
+    modules.sd_view_project_queues(webdriver, jira_datasets)
+
+
+def test_1_selenium_sd_view_portal(webdriver, jira_datasets, jira_screen_shots):
+    modules.sd_view_project_queues(webdriver, jira_datasets)
+
+
 # this action should be the last one
 def test_2_selenium_z_log_out(webdriver, jira_datasets, jira_screen_shots):
     modules.log_out(webdriver, jira_datasets)

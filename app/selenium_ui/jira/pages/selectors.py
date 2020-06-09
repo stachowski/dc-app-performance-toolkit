@@ -27,6 +27,8 @@ class UrlManager:
         self.scrum_board_backlog_params = f"/secure/RapidBoard.jspa?rapidView={board_id}&view=planning"
         self.scrum_board_params = f"/secure/RapidBoard.jspa?rapidView={board_id}"
 
+        self.sd_queues_params = f"/projects/{project_key}/queues/custom/1"
+
     def login_url(self):
         return f"{self.host}{self.login_params}"
 
@@ -62,6 +64,9 @@ class UrlManager:
 
     def logout_url(self):
         return f"{self.host}{self.logout_params}"
+
+    def sd_queues_url(self):
+        return f"{self.host}{self.sd_queues_params}"
 
 
 class LoginPageLocators:
@@ -148,3 +153,7 @@ class BoardLocators:
     # Scrum boards
     scrum_board_backlog_content = (By.CSS_SELECTOR, "#ghx-backlog[data-rendered]:not(.browser-metrics-stale)")
     board_columns = (By.CSS_SELECTOR, ".ghx-column")
+
+class QueuesLocators:
+    # projects list locators
+    queues_content = (By.CLASS_NAME, "queue-react-table-container")
