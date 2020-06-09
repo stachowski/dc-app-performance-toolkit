@@ -1,3 +1,14 @@
+# About this fork:
+This is a fork with some simple modifications that allow stress testing on a JSD application
+* Requirements:
+    * You need to have service desk installed
+    * As of now, you need to manually give the group "ira-servicedesk-users" access to each service desk project. Specifically "Browse Projects" and "Service Desk Agent"
+    * You need to have licenses enough for the amount of #concurrency (users) specified in the jira.yml
+    
+## Added and removed tests:
+The tests for scrum boards and kanban boards have been removed.
+Added 2 new tests, sd_view_portal and sd_view_queues
+
 # Data Center App Performance Toolkit 
 The Data Center App Performance Toolkit extends [Taurus](https://gettaurus.org/) which is an open source performance framework that executes JMeter and Selenium.
 
