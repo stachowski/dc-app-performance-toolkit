@@ -1,4 +1,5 @@
 # About this fork:
+Hello github, since there is no official JSD test kit, maybe you can use this as a basis for your app testing.
 This is a fork with some simple modifications that allow stress testing on a JSD application
 * Requirements:
     * You need to have service desk installed
